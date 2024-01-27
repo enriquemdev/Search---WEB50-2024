@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font: sans-serif;
 }
 
 .container {
@@ -20,13 +21,14 @@
     margin-bottom: 30px;
 }
 
-input {
+#main-input {
     padding: 20px;
     border: 1px solid lightgray;
     border-radius: 30px;
     height: 45px;
     width: 50%;
     font-size: 16px;
+    margin-bottom: 30px;
 }
 
 
@@ -45,24 +47,21 @@ input {
     background-color: $color;
 }
 
+.btn {
+    @extend %btn;
+    @include bg-color(variables.$hueso);
+}
+
 // Nesting (Anidamiento)
 .btn_container {
-    .btn1 {
-        @extend %btn;
-        @include bg-color(variables.$hueso);
-        margin-right: 10px;
-    }
-    
-    .btn2 {
-        @extend %btn;
-        @include bg-color(skyblue);
-    }
-    
-
     // Hover events (Se le pone aqui para que agarre la especificidad, de que esta dentro de este contenedor, se puede poner afuera pero con !important)
     button:hover {
         border: 1px solid lightgray;
         // color: red;
+    }
+
+    .btn:first-child {
+        margin-right: 10px;
     }
     
 }
@@ -70,5 +69,51 @@ input {
 // Hover events
 input:hover {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+// Navbar
+
+#navbar {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+#normal_form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#advanced_form {
+    display: flex;
+}
+
+.container2 {
+    padding: 15px;
+}
+
+.container2 > * {
+    margin-bottom: 10px;
+}
+
+#advanced_btn {
+    background-color: #4d90fe;
+    color: white;
+    padding: 4px;
+    float: right;
+    margin-top: 20px;
+}
+
+.input-adv {
+    border-radius: 3x;
+}
+
+.img-text {
+    color: #4d90fe;
+    margin-left: -56px;
 }
 
