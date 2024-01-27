@@ -1,0 +1,74 @@
+@use 'variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; // por defecto es row
+}
+
+/* selector para todos los hijos de container */
+.container > * {
+    margin-bottom: 30px;
+}
+
+input {
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    height: 45px;
+    width: 50%;
+    font-size: 16px;
+}
+
+
+// *** Botones ***
+
+// Herencia (Clase base)
+%btn {
+    border: none;
+    font-size: 14px;
+    padding: 10px 20px; /* alto ancho */
+    border-radius: 5px;
+}
+
+// Mixin (El valor que se le pone sera el por defecto si no se le pasa valor al llamarlo)
+@mixin bg-color($color: red) {
+    background-color: $color;
+}
+
+// Nesting (Anidamiento)
+.btn_container {
+    .btn1 {
+        @extend %btn;
+        @include bg-color(variables.$hueso);
+        margin-right: 10px;
+    }
+    
+    .btn2 {
+        @extend %btn;
+        @include bg-color(skyblue);
+    }
+    
+
+    // Hover events (Se le pone aqui para que agarre la especificidad, de que esta dentro de este contenedor, se puede poner afuera pero con !important)
+    button:hover {
+        border: 1px solid lightgray;
+        // color: red;
+    }
+    
+}
+
+// Hover events
+input:hover {
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
